@@ -14,8 +14,12 @@
         <form id="js-shopping-list-form">
             <label for="shopping-list-entry">Add an item</label>
             <input type="text" name="shopping-list-entry" class="js-shopping-list-entry" placeholder="e.g., broccoli">
-            <button type="submit">Add item</button>
+            <button type="submit" class="js-add-item">Add item</button>
         </form>
+        <div id="js-extra-buttons">
+          <button type="button" class="js-search-item">Search item</button>
+          <button type="toggle" class= "js-check-uncheck">Display: Unchecked/All</button>
+        </div>
         <ul class="shopping-list js-shopping-list">
         </ul>
     </div>

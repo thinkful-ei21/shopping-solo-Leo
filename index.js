@@ -44,6 +44,10 @@ function generateShoppingItemsString(shoppingList) {
   return items.join('');
 }
 
+function getVisibleList (state){
+
+
+}
 
 function renderShoppingList() {
   console.log('render ran');
@@ -98,8 +102,10 @@ function toggleCheckedForListItem(itemIndex) {
 }
 
 function handleItemCheckClicked() {
-  $('.js-shopping-list').on('click', '.js-item-toggle', event => {
-    
+  $('.js-shopping-list').on('click', '.js-item-toggle', function (event, arg) {
+    console.log(this);
+    console.log(event.currentTarget);
+    console.log(arg);        
     const itemIndex = getItemIndexFromElement(event.currentTarget);
     toggleCheckedForListItem(itemIndex);
     renderShoppingList();
@@ -142,10 +148,10 @@ function editItemName(itemIndex, itemName) {
 function handleNewItemName() {
   $('.js-shopping-list').on('click','.js-edit-current-item', function(event) {
     event.preventDefault();
-
+    const targetParent= $(event.currentTarget).parent();
     const itemIndex = getItemIndexFromElement(event.currentTarget);
-    const newItemName = $('.js-shopping-item-entry').val();
-    //$('.js-shopping-item-entry').val('');
+    const newItemName = targetParent.find('.js-shopping-item-entry').val();
+    targetParent.find('.js-shopping-item-entry').val('');
 
     editItemName(itemIndex, newItemName);
     renderShoppingList();
